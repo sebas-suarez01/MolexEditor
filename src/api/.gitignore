@@ -1,0 +1,62 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+*.env
+*.venv
+
+# Cache and logs
+*.log
+logs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# Testing and coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.pytest_cache/
+pytest_cache/
+
+# Database and local runtime files
+*.sqlite3
+*.db
+*.sql
+instance/
+local_settings.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Mypy
+.mypy_cache/
+
+# Pydantic compiled JSON schema
+*.json
+
+# Docker
+docker-compose.override.yml
+.env.docker
+
+# Python packaging
+dist/
+build/
+*.egg-info/
+
+# FastAPI-specific
+*.pem  # SSL certificates
