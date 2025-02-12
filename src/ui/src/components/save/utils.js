@@ -1,4 +1,9 @@
 import {CLEAR_HISTORY_COMMAND} from 'lexical'
+import {
+  $convertFromMarkdownString,
+  $convertToMarkdownString,
+  TRANSFORMERS,
+} from '@lexical/markdown';
 
 export function editorStateFromSerializedDocument(editor, maybeStringifiedDocument) {
     const json =
@@ -8,22 +13,30 @@ export function editorStateFromSerializedDocument(editor, maybeStringifiedDocume
     return editor.parseEditorState(json.editorState);
   }
 
+
+
 function readTextFileFromSystem(callback) {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.lexical';
+    input.accept = '.lexical, .md';
+    input.multiple = true;
+
     input.addEventListener('change', (event) => {
       const target = event.target
-  
+      
+
       if (target.files) {
         const file = target.files[0];
+        const fileName = file.name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+
         const reader = new FileReader();
         reader.readAsText(file, 'UTF-8');
   
         reader.onload = (readerEvent) => {
           if (readerEvent.target) {
             const content = readerEvent.target.result;
-            callback(content);
+            callback(content, fileExtension);
           }
         };
       }
@@ -32,8 +45,17 @@ function readTextFileFromSystem(callback) {
   }
 
 export function importFile(editor) {
-    readTextFileFromSystem((text) => {
-      editor.setEditorState(editorStateFromSerializedDocument(editor, text));
+    readTextFileFromSystem((text, extension) => {
+      if(extension === 'md'){
+        editor.update(()=>{
+          $convertFromMarkdownString(text, TRANSFORMERS)
+
+        })
+      }
+      else{
+        editor.setEditorState(editorStateFromSerializedDocument(editor, text));
+      }
+      
       editor.dispatchCommand(CLEAR_HISTORY_COMMAND, undefined);
     });
 }

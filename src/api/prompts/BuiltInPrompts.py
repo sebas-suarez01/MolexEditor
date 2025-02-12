@@ -17,6 +17,14 @@ class SystemGenerateTextPrompt(SystemPrompt):
         prompt = self.GENERATE_TEXT_PROMPT
         super().__init__(prompt=prompt)
 
+class SystemReturnResultPrompt(SystemPrompt):
+    RETURN_RESULT_PROMPT="""
+    Devuelve solo lo que se pide, sin explicaciones previas.
+    """
+    def __init__(self):
+        prompt = self.RETURN_RESULT_PROMPT
+        super().__init__(prompt=prompt)
+
 class UserSummarizePrompt(UserPrompt):
     SUMMARIZE_PROMPT = """Por favor, resume el siguiente texto de manera clara, concisa y estructurada, \n
                         manteniendo un enfoque académico y científico. El resumen debe conservar los puntos clave, \n

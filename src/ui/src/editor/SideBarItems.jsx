@@ -17,7 +17,7 @@ const SideBarItems = ({item, setSelectedProject, index, isHidden, setIsHidden, s
     return(
         <>
             {item.show && 
-            <button className={`${selectedProject==item.text?"bg-gray-400":""} h-10`} onClick={()=>handleClick(item.text)} key={index}>
+            <button className={`${selectedProject==item.text?"bg-gray-400":""} h-10 hover:bg-gray-400`} onClick={()=>handleClick(item.text)} key={index}>
                 <item.icon />
             </button>
             }

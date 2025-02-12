@@ -29,50 +29,50 @@ Ensure you have the following installed:
 
 ### 1️⃣ Clone the Repository  
 
-```sh
+```
 git clone https://github.com/sebas-suarez01/MolexEditor
 cd MolexEditor
 ```
 
 ### 🖥️ Frontend (React UI) Setup
 #### Install Dependencies
-```sh
+```
 cd ui
 npm install
 ```
 
 #### ▶️ Run the Frontend
-```sh
+```
 npm run dev
 ```
 
 ### 🛠️ Backend (FastAPI API) Setup
 #### 📌 Create a Virtual Environment
-```sh
+```
 cd api
 python -m venv venv  # Create virtual environment
 source venv/bin/activate  # On macOS/Linux
 venv\Scripts\activate # On Windows
 ```
 #### 📌 Install Dependencies
-```sh
+```
 pip install -r requirements.txt
 ```
 
 #### ▶️ Run the Backend
-```sh
+```
 uvicorn main:app --reload
 ```
 
 ## 🎯 Running Both Together
 ### Backend
-```sh
+```
 cd api
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 uvicorn main:app --reload
 ```
 ### FrontEnd
-```sh
+```
 cd ui
 npm run dev
 ```
