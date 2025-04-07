@@ -9,8 +9,8 @@ from collections import defaultdict
 
 class ReferenceStoreContext:
 
-    def __init__(self):
-        self.embeddings = HuggingFaceEmbeddings()
+    def __init__(self, model_name="sentence-transformers/all-MiniLM-L6-v2"):
+        self.embeddings = HuggingFaceEmbeddings(model_name=model_name)
         self.documents:List[Document] = []
         #documents_ids, ids_counter = ReferenceStoreContext.get_documents_ids(self.documents)
         self.documents_ids = []
